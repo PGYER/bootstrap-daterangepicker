@@ -1135,9 +1135,14 @@
 
             //if a new date range was selected, invoke the user callback function
             // 日期不发生变化时一样响应事件
-//            if (!this.startDate.isSame(this.oldStartDate) || !this.endDate.isSame(this.oldEndDate)) {
+            // if (!this.startDate.isSame(this.oldStartDate) || !this.endDate.isSame(this.oldEndDate)) {
+            //     this.callback(this.startDate, this.endDate, this.chosenLabel);
+            // }
+
+            // 修改：有e为从toggle来，为点击input，否则hide来自点击date
+            if (!e) {
                 this.callback(this.startDate, this.endDate, this.chosenLabel);
-//            }
+            }
 
             //if picker is attached to a text input, update it
             this.updateElement();
@@ -1151,7 +1156,7 @@
 
         toggle: function(e) {
             if (this.isShowing) {
-                this.hide();
+                this.hide(e);
             } else {
                 this.show();
             }
